@@ -1,6 +1,16 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-export const connectDB = async ()=> {
-    await mongoose.connect("mongodb+srv://kirthika25160_db_user:quizapp12@cluster0.drfgwhx.mongodb.net/QuizApp")
-    .then(()=> { console.log('DB connected')})
-}
+dotenv.config(); // Load variables from .env file
+
+export const connectDB = async () => {
+  await mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log("DB connected");
+    })
+    .catch((err) => {
+      console.error("DB connection failed:", err.message);
+    });
+};
+
