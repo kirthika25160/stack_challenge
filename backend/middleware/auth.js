@@ -20,7 +20,7 @@ export default async function authMiddleware(req, res, next) {
       });
     }
 
-    // ✅ Correct way to extract token
+    // Correct way to extract token
     const token = authHeader.split(" ")[1];
    
      console.log("Extracted Token:", token);
@@ -28,11 +28,11 @@ export default async function authMiddleware(req, res, next) {
    
     
 
-    // ✅ Verify token
+    //  Verify token
     const payload = jwt.verify(token, JWT_SECRET);
     console.log("JWT verified:", payload);
 
-    // ✅ Fetch user (optional)
+    //  Fetch user (optional)
     const user = await User.findById(payload.id).select("-password");
     if (!user) {
       return res.status(401).json({
