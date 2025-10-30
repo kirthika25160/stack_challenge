@@ -3,9 +3,13 @@ import User from '../models/userModel.js';
 import  validator from 'validator';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-const TOKEN_EXPIRES_IN ='24h';
-const JWT_SECRET = 'QuizApp2516';
+
+dotenv.config(); 
+
+const TOKEN_EXPIRES_IN = process.env.TOKEN_EXPIRES_IN || '24h';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 //Register
 export async function register(req,res) {

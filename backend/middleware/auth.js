@@ -1,7 +1,10 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
+import dotenv from 'dotenv';
 
-const JWT_SECRET = "QuizApp2516"; // must be same as in userController.js
+dotenv.config(); 
+
+const JWT_SECRET = process.env.JWT_SECRET; // must be same as in userController.js
 
 
 
